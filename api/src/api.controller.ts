@@ -6,8 +6,10 @@ export class ApiController {
   constructor(private readonly apiService: ApiService) {}
 
   @Get('/bus-times')
-  getBusTimes( timesToGenerate: number = 10, currentDay: number = new Date().getDay()) {
-    return this.apiService.getBusTimes( timesToGenerate, currentDay );
-  };
-
-};
+  getBusTimes(
+    timesToGenerate: number = 10,
+    currentDay: number = new Date().getDay(),
+  ) {
+    return this.apiService.getBusTimes(timesToGenerate, currentDay);
+  }
+}

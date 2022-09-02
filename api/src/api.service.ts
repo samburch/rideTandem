@@ -18,7 +18,8 @@ export class ApiService {
     let data: BusTime[] = [];
 
     try {
-      if (currentDay === 0 || currentDay === 6) throw new Error('No busses run on weekends')
+      if (currentDay === 0 || currentDay === 6)
+        throw new Error('No busses run on weekends');
 
       for (let i = 0; i < timesToGenerate; i++) {
         const {
@@ -34,20 +35,20 @@ export class ApiService {
           busId,
           destination,
           minutesUntilArrival: _.random(1, 15),
-          delayed: this.isDelayed()
+          delayed: this.isDelayed(),
         });
       }
 
-      if (data.length < 1) throw new Error('There are no busses currently in service');
+      if (data.length < 1)
+        throw new Error('There are no busses currently in service');
 
       data.sort((a, b) => {
         return a.minutesUntilArrival - b.minutesUntilArrival;
       });
       return data;
-
     } catch (error) {
-      error.name = 'Services unavailable'
-      return [{ error: { name: error.name, message: error.message }}]
+      error.name = 'Services unavailable';
+      return [{ error: { name: error.name, message: error.message } }];
     }
   }
 
@@ -55,16 +56,20 @@ export class ApiService {
     const busRoutes = [
       { id: 176, destination: 'Newham Close', nonOperationalDays: [1, 3] },
       { id: 185, destination: 'Train Station', nonOperationalDays: [5, 2] },
-      { id: 193, destination: 'Shopping Centre', nonOperationalDays: [1, 5, 4]},
+      {
+        id: 193,
+        destination: 'Shopping Centre',
+        nonOperationalDays: [1, 5, 4],
+      },
     ];
     return busRoutes[_.random(0, busRoutes.length - 1)];
   }
 
   private isDelayed() {
-    let result = _.random(1, 3)
+    let result = _.random(1, 3);
     if (result === 3) {
-      return true
+      return true;
     }
-    return false
+    return false;
   }
 }
