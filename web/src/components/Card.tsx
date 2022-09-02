@@ -2,7 +2,7 @@ import { ITimeTable } from "../interfaces";
 
 type Bus = {
   bus: ITimeTable;
-}
+};
 
 const Card = ({ bus }: Bus) => {
   return (
@@ -18,7 +18,10 @@ const Card = ({ bus }: Bus) => {
             <span className="Blob"></span>
           </div>
         ) : (
-          <div>{`${bus.minutesUntilArrival} mins `}{bus.delayed && `(exp. ${bus.minutesUntilArrival + 3} mins)`}</div>
+          <div>
+            {`${bus.minutesUntilArrival} mins `}
+            {bus.delayed && `(exp. ${bus.minutesUntilArrival + 3} mins)`}
+          </div>
         )}
       </div>
     </div>
