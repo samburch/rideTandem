@@ -9,5 +9,5 @@ export interface ITimeTable {
 
 export interface IError {
   name: string;
-  message: string
+  message: string;
 }
