@@ -2,7 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { ApiController } from './api.controller';
 import { ApiService } from './api.service';
 
-describe('TestAPI Controller', () => {
+describe('Test API Controller', () => {
   let controller: ApiController;
 
   beforeEach(async () => {
@@ -29,17 +29,16 @@ describe('TestAPI Controller', () => {
     });
 
     describe('Test weekday bus schedule', () => {
-        test('Should return error if no busses are running', () => {
-            expect(controller.getBusTimes(0, 1)).toHaveProperty(
-                '[0]error.message',
-                'There are no busses currently in service',
-            );
-         });
+      test('Should return error if no busses are running', () => {
+        expect(controller.getBusTimes(0, 1)).toHaveProperty(
+          '[0]error.message',
+          'There are no busses currently in service',
+        );
+      });
 
       test('185 Bus should run on Monday', () => {
-        expect(controller.getBusTimes(10, 1)).toMatchObject([{busId: 185}]);
+        expect(controller.getBusTimes(10, 1)).toMatchObject([{ busId: 185 }]);
       });
-      
     });
   });
 });
